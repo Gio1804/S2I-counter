@@ -1,53 +1,80 @@
-*,*::before,*::after{
+*{
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
-    font-family: sans-serif;
+    font-family:'calibri';
     font-weight: normal;    
 }
-body{
-    /* padding: 0;     */
+body{    
     background: linear-gradient(to right,#00aaff8c, #77ff002b);
 }
 .container {
     height: 100vh;
-    width: 100vw;
+    width: 100vw; 
+    display: flex;  
+    justify-content: center;
+    align-items: center;      
+}
+.counter{
+    width: 30%;    
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center;    
 }
-.container h1{
-    margin: 30px;
-}
-.counter{
-    width: 30%;
-    display: flex;
-    justify-content: center;
+h1{      
+    margin: 40px;   
+    font-size: 40px;
+    font-weight: 700;
 }
 #increment-btn, #decrement-btn, #reset{
     height: 50px;
     width: 120px;
-    padding: 0 40px;
+    margin: 50px;    
+    margin-top: 10px;    
     border-radius: 10px;
-    font-size: 40px;
-    background-color: #2e8d46;
-    border: 2px solid #2e8d46;
-    color: white;
-    margin: 20px;
-    cursor: pointer;
+    font-size: 60px;
+    background-color: transparent;
+    border: none;
+    color: black;
+    cursor: pointer;        
 }
-#reset{
-    font-size: 20px;
+#reset{           
+    margin-bottom: 2px;
+    font-style: italic;
+    text-decoration: underline;  
+    font-size: 25px;     
+    font-weight: 700;              
+}
+#reset:hover, #decrement-btn:hover, #increment-btn:hover{
+    opacity: 0.6;
+}
+#reset:active, #decrement-btn:active, #increment-btn:active{
+    opacity: 0.8;
+}
+#decrement-btn{
+    margin: 30px;
 }
 #counter-value{
-    height: 50px;
-    min-width: 120px;
-    border-radius: 10px;
-    background-color:rgb(221, 0, 255);
-    margin-top: 20px;
-    font-size: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 150px;
+    width: 150px;
+    border: none;
+    border-radius: 30px;
+    background-color:rgba(255, 0, 0, 0.352);    
+    font-size: 50px;
+}
+/* Mobile */
+@media only screen and (max-width: 767px){
+    .counter{
+        margin-bottom: 150px;
+    }
+}
+/* Tablet */
+@media only screen and (min-width: 768px) and (max-width: 1023px){
+  h1{
+    margin-top: 0px;
+  }
 }
