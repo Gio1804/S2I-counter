@@ -1,55 +1,76 @@
-let counter = 0;
+// Funzione per la creazione elementi con id/classi
+function createDOMElement(tagName, option) {     
+    const element = document.createElement(tagName);
 
-// div con classe "container"
-const containerDiv = document.createElement("div");
-containerDiv.className = "container";
-
-// div con classe "counter"
-const counterDiv = document.createElement("div");
-counterDiv.className = "counter";
-
-// Creo h1
-const titleElement = document.createElement("h1");
-titleElement.textContent = "Counter";
-
-// Creo bottone incremento con id
-const incrementButton = document.createElement("button");
-incrementButton.id = "increment-btn";
-incrementButton.textContent = "+";
-// Incremento valore counter
-incrementButton.addEventListener('click', () => {
-    counter++;
-    counterValueDiv.innerHTML = counter;
-})
-
-// Creo il div e id per valore predefinito 0
-const counterValueDiv = document.createElement("button");
-counterValueDiv.id = "counter-value";
-counterValueDiv.textContent= "0";
-
-// Creo bottone decremento e id
-const decrementButton = document.createElement("button");
-decrementButton.id = "decrement-btn";
-decrementButton.textContent = "-";
-// Decremento valore counter
-decrementButton.addEventListener('click', () => {
-    if(counter > 0){ // Evita che il counter vado sotto lo zero
-    counter--;
-    counterValueDiv.innerHTML = counter;
+    if (option) {
+      if (option.className){
+        element.className = option.className;
+      }
+      if (option.id){
+        element.id = option.id;
+      }
+      if (option.innerHTML) {
+        element.innerHTML = option.innerHTML;
+      }
     }
-})
+    return element;
+  }
 
-// Creo bottone reset e id
-const resetButton = document.createElement("button");
-resetButton.id = "reset";
-resetButton.textContent = "Reset";
-// Reset counter
-resetButton.addEventListener('click', reset)
+  // Funzione button con event delegation
+  let counter = 0;  
+  
+  function setupButton(){   
+    counterDiv.addEventListener('click', (event) => { 
+      const target = event.target;    
+  
+            if (target.id === 'increment-btn') {
+                counter++;
+                counterValueDiv.innerHTML = counter;
+            } else if (target.id === 'decrement-btn' && counter > 0){ // > 0 per non andare in negativo 
+                counter--;
+                counterValueDiv.innerHTML = counter;
+            } else if (target.id === 'reset'){              
+                 reset();
+            }
+        }
+      )}
+      
+  function reset(){
+    counter = 0;
+    counterValueDiv.innerHTML = counter;
+  } 
 
-function reset(){
-    counter = 0 ;
-    counterValueDiv.innerHTML = counter
-}
+// div 
+const containerDiv = createDOMElement('div', {
+  className: 'container'
+});
+const counterDiv = createDOMElement('div', {
+  className: 'counter'
+});
+const counterValueDiv = createDOMElement('div', {
+  id: 'counter-value', 
+  innerHTML: '0'
+});
+
+// h1
+const titleElement = createDOMElement('h1',{
+  id: '',
+  innerHTML: 'Counter'
+});
+
+// Button incremento, decremento e reset
+const incrementButton = createDOMElement('button',{
+  id: 'increment-btn', 
+  innerHTML: '+'
+});
+const decrementButton = createDOMElement('button', {
+  id: 'decrement-btn', 
+  innerHTML: '-'
+});
+const resetButton = createDOMElement('button',{
+  id: 'reset', 
+  innerHTML: 'Reset'
+});
 
 // Aggiungo elementi al DOM
 counterDiv.appendChild(titleElement);
@@ -63,6 +84,6 @@ containerDiv.appendChild(counterDiv);
 // Container nell'elemento body
 document.body.appendChild(containerDiv);
 
-
+setupButton();
 
 

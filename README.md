@@ -18,7 +18,7 @@ Benvenuti nel mio progetto Start2Impact/JavaScript Basics. Questo counter, reali
 ![Counter App Preview](img/preview.gif)
 
 ## Link al Progetto
-- Puoi provare il mio counter attraverso questo [link](https://fastidious-twilight-34699e.netlify.app/)
+- Puoi provare il mio counter attraverso questo [link](https://s2i-counter.netlify.app/)
 - Puoi trovare il progetto completo sul mio [GitHub Repository](https://github.com/Gio1804/S2I-counter)
 
 ## Licenza
